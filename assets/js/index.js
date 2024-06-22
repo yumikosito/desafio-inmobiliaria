@@ -33,24 +33,35 @@ const propiedades_venta = [
     pets: true,
   },
   {
-    nombre: 'Cabana de lujo con terraza panorámica',
-    src: './assets/img/cabana.png',
-    descripcion: 'Esta cabana de lujo ofrece una terraza panorámica con vistas espectaculares',
-    ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
-    habitaciones: 5,
-    banos: 4,
-    costo: "5.500",
+    nombre: 'Apartamento moderno en el centro',
+    src: 'https://images.unsplash.com/photo-1628592102751-ba83b0314276?q=80&w=1997&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Moderno apartamento con fácil acceso a todas las comodidades del centro.',
+    ubicacion: '123 Main Street, Metropolis, NY 54321',
+    habitaciones: 1,
+    banos: 1,
+    costo: "1.800",
     smoke: false,
+    pets: false,
+  },
+  {
+    nombre: 'Apartamento con vistas al mar',
+    src: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=60',
+    descripcion: 'Apartamento de lujo con vistas impresionantes al mar y balcón amplio.',
+    ubicacion: '456 Ocean Drive, Beach Town, FL 12345',
+    habitaciones: 3,
+    banos: 2,
+    costo: "3.500",
+    smoke: true,
     pets: true,
   },
   {
-    nombre: 'Penthouse de lujo con terraza panorámica',
-    src: '',
-    descripcion: 'Este penthouse de lujo ofrece una terraza panorámica con vistas espectaculares',
-    ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
-    habitaciones: 3,
+    nombre: 'Apartamento rústico en el campo',
+    src: 'https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Encantador apartamento rústico con vistas al campo y a la playa.',
+    ubicacion: '789 Country Lane, Ruralville, TX 67890',
+    habitaciones: 2,
     banos: 1,
-    costo: "4.500",
+    costo: "1.000",
     smoke: false,
     pets: true,
   }
@@ -91,24 +102,46 @@ const propiedades_alquiler = [
     pets: false,
   },
   {
-    nombre: 'Penthouse de lujo con terraza panorámica',
-    src: '',
-    descripcion: 'Este penthouse de lujo ofrece una terraza panorámica con vistas espectaculares',
-    ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
-    habitaciones: 3,
+    nombre: 'Apartamento céntrico con jardín',
+    src: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=60',
+    descripcion: 'Apartamento de 2 habitaciones con jardín privado en el centro.',
+    ubicacion: '321 City Park, Urbania, WA 23456',
+    habitaciones: 2,
     banos: 1,
+    costo: "2.200",
+    smoke: true,
+    pets: false,
+  },
+  {
+    nombre: 'Apartamento en el distrito financiero',
+    src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de lujo con todas las comodidades modernas.',
+    ubicacion: '654 Financial St, Business City, IL 78901',
+    habitaciones: 3,
+    banos: 2,
     costo: "4.500",
     smoke: false,
     pets: true,
   },
   {
-    nombre: 'Penthouse de lujo con terraza panorámica',
-    src: '',
-    descripcion: 'Este penthouse de lujo ofrece una terraza panorámica con vistas espectaculares',
-    ubicacion: '567 Skyline Avenue, Skyview City, CA 56789',
+    nombre: 'Apartamento minimalista',
+    src: 'https://plus.unsplash.com/premium_photo-1683769252575-e986af039184?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de 1 habitación con diseño minimalista y vistas a la ciudad.',
+    ubicacion: '123 Minimalist Ave, Simple City, NJ 34567',
+    habitaciones: 1,
+    banos: 1,
+    costo: "1.400",
+    smoke: true,
+    pets: false,
+  },
+  {
+    nombre: 'Apartamento en edificio histórico',
+    src: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de 3 habitaciones en un edificio histórico renovado.',
+    ubicacion: '987 Old Town Rd, Historic City, NY 56789',
     habitaciones: 3,
     banos: 2,
-    costo: "4.500",
+    costo: "2.900",
     smoke: false,
     pets: true,
   }
@@ -150,7 +183,8 @@ if (ventas!==null){
     }
 
     html+=`
-      <div class="col-md-4 mb-4">
+      <div class="d-flex col-md-4 col-sm-12 mt-4 justify-content-center">
+      <div class="mb-4">
         <div class="card">
           <img
             src="${venta.src}"
@@ -159,22 +193,23 @@ if (ventas!==null){
           />
           <div class="card-body">
             <h5 class="card-title"> ${venta.nombre}</h5>
-            <p class="card-text">${venta.descripcion}</p>
+            <p class="card-text"> ${venta.descripcion}</p>
             <p>
-              <i class="fas fa-map-marker-alt"></i>${venta.ubicacion}
+              <i class="fas fa-map-marker-alt"></i> ${venta.ubicacion}
             </p>
             <p>
-              <i class="fas fa-bed"></i>${venta.habitaciones} Habitaciones |
+              <i class="fas fa-bed"></i> ${venta.habitaciones} Habitaciones |
               <i class="fas fa-bath"></i> ${venta.banos} Baños
             </p>
             <p><i class="fas fa-dollar-sign"></i>${venta.costo}</p>
             
             <p class=${colorFumar}>
-            <i class=${smokeBan}></i>${fumar}</p>
+            <i class=${smokeBan}></i> ${fumar}</p>
 
             <p class=${colorMascotas}>
-              <i class=${petsBan}></i>${mascotas}</p>
+              <i class=${petsBan}></i> ${mascotas}</p>
           </div>
+        </div>
         </div>
       </div>
     `
@@ -214,30 +249,32 @@ if (rentas!==null){
     }
 
     html+=`
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img
-            src="${alquiler.src}"
-            class="card-img-top"
-            alt="Imagen del departamento"
-          />
-          <div class="card-body">
-            <h5 class="card-title"> ${alquiler.nombre}</h5>
-            <p class="card-text">${alquiler.descripcion}</p>
-            <p>
-              <i class="fas fa-map-marker-alt"></i>${alquiler.ubicacion}
-            </p>
-            <p>
-              <i class="fas fa-bed"></i>${alquiler.habitaciones} Habitaciones |
-              <i class="fas fa-bath"></i> ${alquiler.banos} Baños
-            </p>
-            <p><i class="fas fa-dollar-sign"></i>${alquiler.costo}</p>
-            
-            <p class=${colorFumar}>
-            <i class=${smokeBan}></i>${fumar}</p>
+      <div class="d-flex col-md-4 col-sm-12 mt-4 justify-content-center">
+        <div class="mb-4">
+          <div class="card">
+            <img
+              src="${alquiler.src}"
+              class="card-img-top"
+              alt="Imagen del departamento"
+            />
+            <div class="card-body">
+              <h5 class="card-title"> ${alquiler.nombre}</h5>
+              <p class="card-text">${alquiler.descripcion}</p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i>${alquiler.ubicacion}
+              </p>
+              <p>
+                <i class="fas fa-bed"></i>${alquiler.habitaciones} Habitaciones |
+                <i class="fas fa-bath"></i> ${alquiler.banos} Baños
+              </p>
+              <p><i class="fas fa-dollar-sign"></i>${alquiler.costo}</p>
+              
+              <p class=${colorFumar}>
+              <i class=${smokeBan}></i>${fumar}</p>
 
-            <p class=${colorMascotas}>
-              <i class=${petsBan}></i>${mascotas}</p>
+              <p class=${colorMascotas}>
+                <i class=${petsBan}></i>${mascotas}</p>
+            </div>
           </div>
         </div>
       </div>
