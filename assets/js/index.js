@@ -64,6 +64,28 @@ const propiedades_venta = [
     costo: "1.000",
     smoke: false,
     pets: true,
+  },
+  {
+    nombre: 'Apartamento luminoso con balcón',
+    src: 'https://images.unsplash.com/photo-1569664370706-e26397378b09?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de 2 habitaciones con balcón y vistas al parque.',
+    ubicacion: '321 Park St, Green City, CA 12345',
+    habitaciones: 2,
+    banos: 1,
+    costo: "2.300",
+    smoke: true,
+    pets: true,
+  },
+  {
+    nombre: 'Apartamento cerca del río',
+    src: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=60',
+    descripcion: 'Apartamento de 2 habitaciones con acceso directo al río.',
+    ubicacion: '456 River Rd, Waterside, FL 67890',
+    habitaciones: 2,
+    banos: 1,
+    costo: "1.900",
+    smoke: true,
+    pets: false,
   }
 ]
 
@@ -144,13 +166,44 @@ const propiedades_alquiler = [
     costo: "2.900",
     smoke: false,
     pets: true,
+  },
+  {
+    nombre: 'Apartamento de diseño moderno',
+    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de 1 habitación con diseño moderno y acabados de lujo.',
+    ubicacion: '456 Design Blvd, Style City, TX 67890',
+    habitaciones: 1,
+    banos: 1,
+    costo: "2.100",
+    smoke: false,
+    pets: false,
+  },
+  {
+    nombre: 'Apartamento con cocina gourmet',
+    src: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    descripcion: 'Apartamento de 3 habitaciones con cocina gourmet totalmente equipada.',
+    ubicacion: '123 Gourmet Lane, Foodie City, MA 34567',
+    habitaciones: 3,
+    banos: 2,
+    costo: "3.000",
+    smoke: false,
+    pets: true,
   }
 ]
 
 const ventas=document.querySelector("#venta")
 const rentas=document.querySelector("#alquiler")
+const index=document.querySelector("#index")
 const contenedorVenta=document.querySelector("#contenedor_ventas")
 const contenedorAlquiler=document.querySelector("#contenedor_alquiler")
+let p_venta=propiedades_venta
+let p_alquiler=propiedades_alquiler
+
+
+if(index!==null){
+  p_venta= propiedades_venta.slice(0,3)
+  p_alquiler= propiedades_alquiler.slice(0,3)
+}
 
 if (ventas!==null){
   let html=""
@@ -161,7 +214,7 @@ if (ventas!==null){
   let smokeBan=""
   let petsBan=""
 
-  for (let venta of propiedades_venta){
+  for (let venta of p_venta){
     if (venta.smoke===true){
       fumar="Se permite fumar"
       colorFumar="text-success"
@@ -216,6 +269,9 @@ if (ventas!==null){
 
   }
   contenedorVenta.innerHTML=html
+  if(index!==null){
+    ventas.innerHTML+='<a href="./propiedades_venta.html" class="btn btn-dark">Ver todas las propiedades en venta</a>'  
+  }
 }
 
 if (rentas!==null){
@@ -227,7 +283,7 @@ if (rentas!==null){
   let smokeBan=""
   let petsBan=""
 
-  for (let alquiler of propiedades_alquiler){
+  for (let alquiler of p_alquiler){
     if (alquiler.smoke===true){
       fumar="Se permite fumar"
       colorFumar="text-success"
@@ -259,27 +315,30 @@ if (rentas!==null){
             />
             <div class="card-body">
               <h5 class="card-title"> ${alquiler.nombre}</h5>
-              <p class="card-text">${alquiler.descripcion}</p>
+              <p class="card-text"> ${alquiler.descripcion}</p>
               <p>
-                <i class="fas fa-map-marker-alt"></i>${alquiler.ubicacion}
+                <i class="fas fa-map-marker-alt"></i> ${alquiler.ubicacion}
               </p>
               <p>
-                <i class="fas fa-bed"></i>${alquiler.habitaciones} Habitaciones |
+                <i class="fas fa-bed"></i> ${alquiler.habitaciones} Habitaciones |
                 <i class="fas fa-bath"></i> ${alquiler.banos} Baños
               </p>
-              <p><i class="fas fa-dollar-sign"></i>${alquiler.costo}</p>
+              <p><i class="fas fa-dollar-sign"></i> ${alquiler.costo}</p>
               
               <p class=${colorFumar}>
-              <i class=${smokeBan}></i>${fumar}</p>
+              <i class=${smokeBan}></i> ${fumar}</p>
 
               <p class=${colorMascotas}>
-                <i class=${petsBan}></i>${mascotas}</p>
+                <i class=${petsBan}></i> ${mascotas}</p>
             </div>
           </div>
         </div>
       </div>
     `
-
   }
-  contenedorAlquiler.innerHTML=html 
+  contenedorAlquiler.innerHTML=html
+  if(index!==null){
+    rentas.innerHTML+='<a href="./propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>'
+  }
 }
+
