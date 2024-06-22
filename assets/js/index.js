@@ -199,13 +199,8 @@ const contenedorAlquiler=document.querySelector("#contenedor_alquiler")
 let p_venta=propiedades_venta
 let p_alquiler=propiedades_alquiler
 
-
-if(index!==null){
-  p_venta= propiedades_venta.slice(0,3)
-  p_alquiler= propiedades_alquiler.slice(0,3)
-}
-
 if (ventas!==null){
+  let contador_venta = 0
   let html=""
   let fumar=""
   let mascotas=""
@@ -215,6 +210,12 @@ if (ventas!==null){
   let petsBan=""
 
   for (let venta of p_venta){
+    if (index !==null){
+      contador_venta += 1;
+      if (contador_venta > 3){
+        break;
+      }
+    }
     if (venta.smoke===true){
       fumar="Se permite fumar"
       colorFumar="text-success"
@@ -275,6 +276,7 @@ if (ventas!==null){
 }
 
 if (rentas!==null){
+  let contador_alquiler = 0
   let html=""
   let fumar=""
   let mascotas=""
@@ -284,6 +286,13 @@ if (rentas!==null){
   let petsBan=""
 
   for (let alquiler of p_alquiler){
+    if (index !==null){
+      contador_alquiler += 1;
+      if (contador_alquiler > 3){
+        break;
+      }
+    }
+
     if (alquiler.smoke===true){
       fumar="Se permite fumar"
       colorFumar="text-success"
@@ -336,9 +345,8 @@ if (rentas!==null){
       </div>
     `
   }
-  contenedorAlquiler.innerHTML=html
-  if(index!==null){
-    rentas.innerHTML+='<a href="./propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>'
-  }
+    contenedorAlquiler.innerHTML=html
+    if(index!==null){
+      rentas.innerHTML+='<a href="./propiedades_alquiler.html" class="btn btn-dark">Ver todas las propiedades en alquiler</a>'
+    }
 }
-
